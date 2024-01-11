@@ -1,0 +1,6 @@
+# Ignore artifacts:
+.next
+.husky
+
+# Ignore all HTML files:
+**/*.html
