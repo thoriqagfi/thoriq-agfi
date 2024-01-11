@@ -1,11 +1,20 @@
 {
-  "singleQuote": false,
-  "trailingComma": "all",
-  "parser": "flow",
-  "semi": true,
+  "prettier/prettier": [
+    "error",
+    {
+      "singleQuote": true,
+      "parser": "flow",
+      "trailingComma": "es5",
+      "tabWidth": 2,
+      "arrowParens": "always",
+      "jsxSingleQuote": false,
+      "endOfLine": "auto"
+    }
+  ],
+  "singleQuote": true,
+  "trailingComma": "es5",
   "tabWidth": 2,
-  "useTabs": false,
-  "arrowParens": "avoid",
-  "bracketSpacing": true,
-  "proseWrap": "preserve"
+  "arrowParens": "always",
+  "jsxSingleQuote": true,
+  "endOfLine": "auto"
 }
