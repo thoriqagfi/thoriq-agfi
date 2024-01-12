@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import React from 'react';
 
 export default function Navbar() {
   return (
@@ -16,7 +17,9 @@ export default function Navbar() {
           <Link
             className='font-bold text-lg text-gray-900 dark:text-gray-100'
             href='/blog'
-          ></Link>
+          >
+            Blogs
+          </Link>
           <Link
             className='font-bold text-lg text-gray-900 dark:text-gray-100 ml-4'
             href='/portfolio'

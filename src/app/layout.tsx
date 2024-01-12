@@ -1,10 +1,12 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
+import React from 'react';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://thoriqagfi.com'),
   title: 'Thariq Agfi Hermawan',
   description:
     'Website portfolio developed by Thariq Agfi Hermawan. Showcasing a diverse range of creative projects and blogs.',
