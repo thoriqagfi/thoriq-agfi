@@ -1,9 +1,9 @@
-import Hero from '@/container/hero';
+import Hero from '@/containers/hero';
 import React from 'react';
 
 export default function Home() {
   return (
-    <main className='flex flex-col items-center px-24'>
+    <main className='flex min-h-screen flex-col items-center'>
       <Hero />
     </main>
   );

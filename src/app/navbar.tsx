@@ -1,8 +1,30 @@
+'use client';
+import UnstyledLink from '@/components/links/UnstyledLink';
 import { cn } from '@/lib/cn';
-import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import React from 'react';
 
+const NavbarContents = [
+  {
+    name: 'Home',
+    href: '/',
+  },
+  {
+    name: 'About',
+    href: '/about',
+  },
+  {
+    name: 'Projects',
+    href: '#projects',
+  },
+  {
+    name: 'Blogs',
+    href: '/blogs',
+  },
+];
+
 export default function Navbar() {
+  const pathname = usePathname();
   return (
     <div
       className={cn(
@@ -24,19 +46,21 @@ export default function Navbar() {
             'transition-all duration-500 ease-in-out md:translate-y-0 -translate-y-[200%] md:group-hover:translate-y-0 group-hover:translate-y-2'
           )}
         >
-          <ul className='flex items-center justify-center gap-4'>
-            <li className='text-white'>
-              <Link href='/'>Home</Link>
-            </li>
-            <li className='text-white'>
-              <Link href='#about'>About</Link>
-            </li>
-            <li className='text-white'>
-              <Link href='#projects'>Projects</Link>
-            </li>
-            <li className='text-white'>
-              <Link href='#blogs'>Blogs</Link>
-            </li>
+          <ul className='flex items-center justify-center gap-8'>
+            {NavbarContents.map((content) => (
+              <li key={content.name}>
+                <UnstyledLink
+                  className={cn(
+                    'font-medium hover:text-primary-500 ease-in-out transition-all duration-500',
+                    pathname === content.href &&
+                      'text-primary-700 hover:text-primary-700'
+                  )}
+                  href={content.href}
+                >
+                  {content.name}
+                </UnstyledLink>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

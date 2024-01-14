@@ -25,3 +25,8 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.layout {
+  max-width: 68rem;
+  @apply mx-auto w-11/12;
+}

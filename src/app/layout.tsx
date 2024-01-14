@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     siteName: 'Thariq Agfi Hermawan',
     images: [
       {
-        url: 'https://thoriqagfi.com/images/og-image.png',
+        url: '/images/logo.png',
         width: 1200,
         height: 630,
         alt: 'Thariq Agfi Hermawan',
