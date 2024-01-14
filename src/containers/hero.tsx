@@ -5,7 +5,7 @@ import { cn } from '@/lib/cn';
 import React from 'react';
 import { FaArrowDown, FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
 
-const SocialMedia = [
+export const SocialMedia = [
   {
     id: 1,
     name: 'Github',
@@ -16,7 +16,7 @@ const SocialMedia = [
     id: 2,
     name: 'Linkedin',
     icon: FaLinkedin,
-    href: 'https://linkedin.com/in/thoriqagfi',
+    href: 'https://linkedin.com/in/thariqagfihermawan/',
   },
   {
     id: 3,
@@ -28,7 +28,7 @@ const SocialMedia = [
 
 export default function Hero() {
   return (
-    <div className='layout min-h-screen flex flex-col justify-center items-center'>
+    <div className='min-h-screen flex flex-col justify-center items-center'>
       <div className='flex flex-col gap-5 h-full'>
         <Typography variant='h5' color='white' weight='bold'>
           Hello there!
