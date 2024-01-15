@@ -1,3 +1,4 @@
+import ButtonLink from '@/components/links/ButtonLink';
 import ProjectCard from '@/components/projects-card';
 import Typography from '@/components/typography';
 import React from 'react';
@@ -26,24 +27,40 @@ const projects = [
     href: '/projects/its-expo',
     views: 3,
   },
+  {
+    id: 3,
+    title: 'Spasial 2024',
+    description:
+      'SPASIAL is one of the most prestigious events hosted by Interior Design students at ITS.',
+    icon: [TbBrandNextjs, FaReact, SiTailwindcss, SiRedux],
+    img: '/images/projects/spasial.png',
+    href: '/projects/spasial',
+    views: 2,
+  },
 ];
 
 export default function Projects() {
   return (
-    <div
-      id='about'
-      className='min-h-screen flex flex-col justify-center items-center'
-    >
+    <div id='about' className='min-h-screen flex flex-col justify-center'>
       <Typography
         variant='h2'
         className='text-transparent bg-clip-text bg-gradient-to-tr from-primary-600 via-primary-700 to-primary-800 font-bold'
+        data-aos='fade-up'
       >
         PROJECTS
       </Typography>
-      <div className='pt-5 grid grid-cols-2 xl:grid-cols-3 gap-4'>
+      <div
+        className='pt-5 grid grid-cols-2 xl:grid-cols-3 gap-4'
+        data-aos='fade-up'
+      >
         {projects.map((project, index) => (
           <ProjectCard key={project.id ?? index} {...project} />
         ))}
+      </div>
+      <div className='mt-4'>
+        <ButtonLink href='/projects' variant='primary'>
+          See more projects
+        </ButtonLink>
       </div>
     </div>
   );

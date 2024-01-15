@@ -30,21 +30,33 @@ export default function Hero() {
   return (
     <div className='min-h-screen flex flex-col justify-center items-center'>
       <div className='flex flex-col gap-5 h-full'>
-        <Typography variant='h5' color='white' weight='bold'>
+        <Typography variant='h5' color='white' weight='bold' data-aos='fade-up'>
           Hello there!
         </Typography>
-        <Typography variant='h1' color='white' weight='bold'>
+        <Typography
+          variant='h1'
+          color='white'
+          weight='bold'
+          data-aos='fade-up'
+          data-aos-duration='700'
+        >
           This is{' '}
           <span className='text-transparent bg-clip-text bg-gradient-to-tr from-primary-600 via-primary-700 to-primary-800 animate-pulse'>
             Agfi&apos;s
           </span>{' '}
           Portfolio
         </Typography>
-        <Typography variant='p' color='gray' weight='medium'>
+        <Typography
+          variant='p'
+          color='gray'
+          weight='medium'
+          data-aos='fade-up'
+          data-aos-duration='800'
+        >
           Highly interested in IT Infrastructure, Machine Learning, and Software
           Engineering with several Certifications
         </Typography>
-        <div className='flex gap-5'>
+        <div className='flex gap-5' data-aos='fade-up' data-aos-duration='600'>
           <ButtonLink
             href='/about'
             className='text-gray-800 dark:text-gray-800'
@@ -56,6 +68,8 @@ export default function Hero() {
         <div className='flex gap-5'>
           {SocialMedia.map((social) => (
             <UnstyledLink
+              data-aos='fade-up'
+              data-aos-duration='900'
               href={social.href}
               key={social.id}
               className={cn(
