@@ -35,7 +35,10 @@ export default function Navbar() {
       <div
         className={cn(
           'relative flex items-center shadow-lg justify-between rounded-lg px-6 py-2 flex-row',
-          'bg-gradient-to-b from-zinc-200 to-zinc-200 dark:from-zinc-800 dark:to-zinc-800/30',
+          // 'from-zinc-200 to-zinc-200',
+          // 'dark:from-zinc-800 dark:to-zinc-800/30',
+          'from-zinc-800 to-zinc-800/80',
+          'bg-gradient-to-b',
           'transition-all duration-500 ease-in-out',
           'h-16'
         )}
@@ -53,7 +56,7 @@ export default function Navbar() {
                   className={cn(
                     'font-medium hover:text-primary-500 ease-in-out transition-all duration-500',
                     pathname === content.href &&
-                      'text-primary-700 hover:text-primary-700'
+                      'text-primary-700 hover:text-primary-700 font-bold'
                   )}
                   href={content.href}
                 >

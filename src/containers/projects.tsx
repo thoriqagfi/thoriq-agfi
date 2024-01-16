@@ -1,6 +1,7 @@
 import ButtonLink from '@/components/links/ButtonLink';
 import ProjectCard from '@/components/projects-card';
 import Typography from '@/components/typography';
+// import { Project } from '@/types/project';
 import React from 'react';
 import { FaReact } from 'react-icons/fa';
 import { SiRedux, SiTailwindcss } from 'react-icons/si';
@@ -12,9 +13,9 @@ const projects = [
     title: 'PPDB Surabaya',
     description:
       'PPDB Surabaya is a website for elementary student registration in Surabaya.',
-    icon: [TbBrandNextjs, FaReact, SiTailwindcss, SiRedux],
-    img: '/images/projects/ppdb-surabaya.png',
-    href: '/projects/ppdb-surabaya',
+    tech_stacks: [TbBrandNextjs, FaReact, SiTailwindcss, SiRedux],
+    images: '/images/projects/ppdb-surabaya.png',
+    url_site: '/projects/ppdb-surabaya',
     views: 5,
   },
   {
@@ -22,9 +23,9 @@ const projects = [
     title: 'ITS Expo 2023',
     description:
       'ITS Expo 2023 is an big event that accommodates the entire ITS Students to demonstrate ITS inovation to public.',
-    icon: [TbBrandNextjs, FaReact, SiTailwindcss, SiRedux],
-    img: '/images/projects/its-expo.png',
-    href: '/projects/its-expo',
+    tech_stacks: [TbBrandNextjs, FaReact, SiTailwindcss, SiRedux],
+    images: '/images/projects/its-expo.png',
+    url_site: '/projects/its-expo',
     views: 3,
   },
   {
@@ -32,9 +33,9 @@ const projects = [
     title: 'Spasial 2024',
     description:
       'SPASIAL is one of the most prestigious events hosted by Interior Design students at ITS.',
-    icon: [TbBrandNextjs, FaReact, SiTailwindcss, SiRedux],
-    img: '/images/projects/spasial.png',
-    href: '/projects/spasial',
+    tech_stacks: [TbBrandNextjs, FaReact, SiTailwindcss, SiRedux],
+    images: '/images/projects/spasial.png',
+    url_site: '/projects/spasial',
     views: 2,
   },
 ];
@@ -56,6 +57,9 @@ export default function Projects() {
         {projects.map((project, index) => (
           <ProjectCard key={project.id ?? index} {...project} />
         ))}
+        {/* {allProjectsData.map((project, index) => (
+          <ProjectCard key={project.id ?? index} {...project} />
+        ))} */}
       </div>
       <div className='mt-4'>
         <ButtonLink href='/projects' variant='primary'>

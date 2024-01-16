@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Blogs {
+  id           Int      @id @default(autoincrement())
+  title        String   @db.VarChar(255)
+  description  String?  @db.VarChar(255)
+  views        Int      @default(0)
+  minutes_read Int      @default(0)
+  createdAt    DateTime @default(now()) @db.Timestamp(6)
+  content      String?
+  published    Boolean  @default(false)
+  authorId     Int
+  Users        Users    @relation(fields: [authorId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model ProjectTechStacks {
+  projectId   Int
+  techStackId Int
+  Projects    Projects   @relation(fields: [projectId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  TechStacks  TechStacks @relation(fields: [techStackId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([projectId, techStackId])
+}
+
+model Projects {
+  id                Int                 @id @default(autoincrement())
+  title             String              @db.VarChar(255)
+  description       String?             @db.VarChar(255)
+  views             Int                 @default(0)
+  images            String              @db.VarChar(255)
+  content           String?
+  total_team        Int                 @default(1)
+  url_site          String?             @db.VarChar(255)
+  userId            Int
+  ProjectTechStacks ProjectTechStacks[]
+  Users             Users               @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model TechStacks {
+  id                Int                 @id @default(autoincrement())
+  name              String              @unique @db.VarChar(255)
+  ProjectTechStacks ProjectTechStacks[]
+}
+
+model Users {
+  id       Int        @id @default(autoincrement())
+  name     String?    @db.VarChar(255)
+  email    String     @unique @db.VarChar(255)
+  password String     @db.VarChar(255)
+  Blogs    Blogs[]
+  Projects Projects[]
+}
