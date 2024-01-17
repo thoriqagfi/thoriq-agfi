@@ -1,46 +1,44 @@
 import ProjectCard from '@/components/projects-card';
 import Typography from '@/components/typography';
+import prisma from '@/lib/prisma';
 import { Button, Link } from '@nextui-org/react';
-// import { Project } from '@/types/project';
 import React from 'react';
-import { FaReact } from 'react-icons/fa';
-import { SiRedux, SiTailwindcss } from 'react-icons/si';
-import { TbBrandNextjs } from 'react-icons/tb';
 
-const projects = [
-  {
-    id: 1,
-    title: 'PPDB Surabaya',
-    description:
-      'PPDB Surabaya is a website for elementary student registration in Surabaya.',
-    tech_stacks: [TbBrandNextjs, FaReact, SiTailwindcss, SiRedux],
-    images: '/images/projects/ppdb-surabaya.png',
-    url_site: '/projects/ppdb-surabaya',
-    views: 5,
-  },
-  {
-    id: 2,
-    title: 'ITS Expo 2023',
-    description:
-      'ITS Expo 2023 is an big event that accommodates the entire ITS Students to demonstrate ITS inovation to public.',
-    tech_stacks: [TbBrandNextjs, FaReact, SiTailwindcss, SiRedux],
-    images: '/images/projects/its-expo.png',
-    url_site: '/projects/its-expo',
-    views: 3,
-  },
-  {
-    id: 3,
-    title: 'Spasial 2024',
-    description:
-      'SPASIAL is one of the most prestigious events hosted by Interior Design students at ITS.',
-    tech_stacks: [TbBrandNextjs, FaReact, SiTailwindcss, SiRedux],
-    images: '/images/projects/spasial.png',
-    url_site: '/projects/spasial',
-    views: 2,
-  },
-];
+// const projects = [
+//   {
+//     id: 1,
+//     title: 'PPDB Surabaya',
+//     description:
+//       'PPDB Surabaya is a website for elementary student registration in Surabaya.',
+//     tech_stacks: [TbBrandNextjs, FaReact, SiTailwindcss, SiRedux],
+//     images: '/images/projects/ppdb-surabaya.png',
+//     url_site: '/projects/ppdb-surabaya',
+//     views: 5,
+//   },
+//   {
+//     id: 2,
+//     title: 'ITS Expo 2023',
+//     description:
+//       'ITS Expo 2023 is an big event that accommodates the entire ITS Students to demonstrate ITS inovation to public.',
+//     tech_stacks: [TbBrandNextjs, FaReact, SiTailwindcss, SiRedux],
+//     images: '/images/projects/its-expo.png',
+//     url_site: '/projects/its-expo',
+//     views: 3,
+//   },
+//   {
+//     id: 3,
+//     title: 'Spasial 2024',
+//     description:
+//       'SPASIAL is one of the most prestigious events hosted by Interior Design students at ITS.',
+//     tech_stacks: [TbBrandNextjs, FaReact, SiTailwindcss, SiRedux],
+//     images: '/images/projects/spasial.png',
+//     url_site: '/projects/spasial',
+//     views: 2,
+//   },
+// ];
 
-export default function Projects() {
+export default function ProjectsPage() {
+  const allProjectsData = getData();
   return (
     <div id='about' className='min-h-screen flex flex-col justify-center'>
       <Typography
@@ -54,12 +52,19 @@ export default function Projects() {
         className='pt-5 grid grid-cols-2 xl:grid-cols-3 gap-4'
         data-aos='fade-up'
       >
-        {projects.map((project, index) => (
-          <ProjectCard key={project.id ?? index} {...project} />
-        ))}
-        {/* {allProjectsData.map((project, index) => (
-          <ProjectCard key={project.id ?? index} {...project} />
-        ))} */}
+        {allProjectsData.then((data) =>
+          data.map((project, index) => (
+            <ProjectCard
+              key={project.id ?? index}
+              {...project}
+              description={project.description || null}
+              content={project.content || null}
+              url_site={project.url_site || null}
+              href={project.href || null}
+              project_tech_stacks={project.ProjectTechStacks}
+            />
+          ))
+        )}
       </div>
       <div className='mt-4'>
         <Button
@@ -75,3 +80,16 @@ export default function Projects() {
     </div>
   );
 }
+
+export const getData = async () => {
+  const projectsWithTechStacksData = await prisma.projects.findMany({
+    include: {
+      ProjectTechStacks: {
+        include: {
+          TechStacks: true,
+        },
+      },
+    },
+  });
+  return projectsWithTechStacksData;
+};

@@ -20,7 +20,8 @@ CREATE TABLE "public"."Blogs" (
 
 CREATE TABLE "public"."TechStacks" (
   id SERIAL PRIMARY KEY NOT NULL,
-  name VARCHAR(255) UNIQUE NOT NULL
+  name VARCHAR(255) UNIQUE NOT NULL,
+  icon VARCHAR(255),
 );
 
 CREATE TABLE "public"."Projects" (
