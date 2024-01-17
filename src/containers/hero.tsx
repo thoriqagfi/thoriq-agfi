@@ -1,7 +1,6 @@
-import ButtonLink from '@/components/links/ButtonLink';
-import UnstyledLink from '@/components/links/UnstyledLink';
 import Typography from '@/components/typography';
 import { cn } from '@/lib/cn';
+import { Button, Link } from '@nextui-org/react';
 import React from 'react';
 import { FaArrowDown, FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
 
@@ -57,21 +56,25 @@ export default function Hero() {
           Engineering with several Certifications
         </Typography>
         <div className='flex gap-5' data-aos='fade-up' data-aos-duration='600'>
-          <ButtonLink
+          <Button
+            as={Link}
             href='/about'
-            className='text-gray-800 dark:text-gray-800'
-            variant='primary'
+            color='secondary'
+            showAnchorIcon
+            variant='solid'
+            className='font-bold rounded-sm bg-primary-600'
           >
             Want to know more about me?
-          </ButtonLink>
+          </Button>
         </div>
         <div className='flex gap-5'>
           {SocialMedia.map((social) => (
-            <UnstyledLink
+            <Link
               data-aos='fade-up'
               data-aos-duration='900'
               href={social.href}
               key={social.id}
+              isExternal
               className={cn(
                 'text-sm font-bold text-gray-400 flex items-center gap-0.5',
                 'hover:text-gray-100 ease-in-out transition-all duration-500'
@@ -79,13 +82,13 @@ export default function Hero() {
             >
               <social.icon />
               &nbsp;{social.name}
-            </UnstyledLink>
+            </Link>
           ))}
         </div>
       </div>
-      <UnstyledLink href={'#about'}>
-        <FaArrowDown className='w-5 h-5 animate-bounce bottom-10 absolute cursor-pointer' />
-      </UnstyledLink>
+      <Link href={'#about'} className='bottom-10 absolute'>
+        <FaArrowDown className='w-5 h-5 animate-bounce cursor-pointer' />
+      </Link>
     </div>
   );
 }

@@ -1,8 +1,8 @@
 import React from 'react';
 import Typography from '@/components/typography';
 import { SocialMedia } from '@/containers/hero';
-import UnstyledLink from '@/components/links/UnstyledLink';
 import { cn } from '@/lib/cn';
+import { Link } from '@nextui-org/react';
 
 export default function Footer() {
   return (
@@ -10,7 +10,9 @@ export default function Footer() {
       <div className='flex flex-col items-center'>
         <div className='flex gap-5 mt-5'>
           {SocialMedia.map((social) => (
-            <UnstyledLink
+            <Link
+              isExternal
+              target='_blank'
               href={social.href}
               key={social.id}
               className={cn(
@@ -20,7 +22,7 @@ export default function Footer() {
             >
               <social.icon />
               &nbsp;{social.name}
-            </UnstyledLink>
+            </Link>
           ))}
         </div>
       </div>

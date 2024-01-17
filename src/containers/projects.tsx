@@ -1,6 +1,6 @@
-import ButtonLink from '@/components/links/ButtonLink';
 import ProjectCard from '@/components/projects-card';
 import Typography from '@/components/typography';
+import { Button, Link } from '@nextui-org/react';
 // import { Project } from '@/types/project';
 import React from 'react';
 import { FaReact } from 'react-icons/fa';
@@ -62,9 +62,15 @@ export default function Projects() {
         ))} */}
       </div>
       <div className='mt-4'>
-        <ButtonLink href='/projects' variant='primary'>
+        <Button
+          as={Link}
+          href='/projects'
+          color='secondary'
+          variant='solid'
+          className='font-bold rounded-sm bg-primary-600'
+        >
           See more projects
-        </ButtonLink>
+        </Button>
       </div>
     </div>
   );

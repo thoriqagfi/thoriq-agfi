@@ -1,6 +1,6 @@
 'use client';
-import UnstyledLink from '@/components/links/UnstyledLink';
 import { cn } from '@/lib/cn';
+import { Link } from '@nextui-org/react';
 import { usePathname } from 'next/navigation';
 import React from 'react';
 
@@ -52,7 +52,7 @@ export default function Navbar() {
           <ul className='flex items-center justify-center gap-8'>
             {NavbarContents.map((content) => (
               <li key={content.name}>
-                <UnstyledLink
+                <Link
                   className={cn(
                     'font-medium hover:text-primary-500 ease-in-out transition-all duration-500',
                     pathname === content.href &&
@@ -61,7 +61,7 @@ export default function Navbar() {
                   href={content.href}
                 >
                   {content.name}
-                </UnstyledLink>
+                </Link>
               </li>
             ))}
           </ul>
