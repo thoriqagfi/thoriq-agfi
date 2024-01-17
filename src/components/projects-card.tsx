@@ -29,7 +29,7 @@ export default function ProjectCard(project: Project) {
   return (
     <Link
       className='border border-gray-500 p-4 rounded flex flex-col gap-2 cursor-pointer hover:bg-gray-800 hover:bg-opacity-50 transition-all duration-500 ease-in-out hover:scale-105'
-      href={project.url_site ?? '/'}
+      href={`/projects/${project.id}` ?? '/'}
     >
       <Image
         src={project.images}
