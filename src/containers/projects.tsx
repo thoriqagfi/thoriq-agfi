@@ -16,7 +16,7 @@ export default function ProjectsPage() {
         PROJECTS
       </Typography>
       <div
-        className='pt-5 grid grid-cols-2 xl:grid-cols-3 gap-4'
+        className='pt-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4'
         data-aos='fade-up'
       >
         {allProjectsData.then((data) =>

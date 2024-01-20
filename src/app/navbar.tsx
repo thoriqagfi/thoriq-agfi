@@ -15,7 +15,7 @@ const NavbarContents = [
   },
   {
     name: 'Projects',
-    href: '#projects',
+    href: '/projects',
   },
   {
     name: 'Blogs',
@@ -56,6 +56,9 @@ export default function Navbar() {
                   className={cn(
                     'font-medium hover:text-primary-500 ease-in-out transition-all duration-500',
                     pathname === content.href &&
+                      'text-primary-700 hover:text-primary-700 font-bold',
+                    pathname.includes('/projects') &&
+                      content.href === '/projects' &&
                       'text-primary-700 hover:text-primary-700 font-bold'
                   )}
                   href={content.href}

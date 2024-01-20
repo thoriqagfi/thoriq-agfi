@@ -36,7 +36,7 @@ export default function ProjectCard(project: Project) {
         alt={project.title}
         width={500}
         height={300}
-        className='rounded'
+        className='rounded w-full'
       />
       <Typography className='font-bold text-white' variant='h6'>
         {project.title}

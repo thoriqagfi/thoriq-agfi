@@ -1,47 +1,42 @@
-'use client';
-import prisma from '@/lib/prisma';
-import { usePathname } from 'next/navigation';
 import React from 'react';
+import prisma from '@/lib/prisma';
+import ProjectDetail from '@/components/project-detail';
 
-export default function DetailProjectsPage() {
-  const pathname = usePathname();
-  // Get the id of the project from the pathname
-  const id = pathname.split('/')[2];
-  const projectDetailData = getProjectsData(Number(id));
+export default function DetailProjectsPage({
+  params: { id },
+}: {
+  params: { id: string };
+}) {
   return (
-    <div className='layout min-h-screen'>
-      {projectDetailData.then((data) => (
-        <div className='flex flex-col'>
-          <div className='flex flex-col'>
-            <h1 className='text-5xl font-bold text-primary-600'>
-              {data?.title}
-            </h1>
-            <h2 className='text-2xl font-bold text-primary-600'>
-              {data?.description}
-            </h2>
-            <h3 className='text-xl font-bold text-primary-600'>
-              {data?.content}
-            </h3>
-            <h4 className='text-lg font-bold text-primary-600'>
-              {data?.url_site}
-            </h4>
-            <h5 className='text-lg font-bold text-primary-600'>{data?.href}</h5>
-            <h6 className='text-lg font-bold text-primary-600'>
-              {data?.ProjectTechStacks.map((tech_stack, index) => (
-                <div key={index}>{tech_stack.TechStacks.name}</div>
-              ))}
-            </h6>
-          </div>
-        </div>
+    <div className='layout min-h-screen py-32'>
+      <ProjectPage id={id} />
+    </div>
+  );
+}
+
+async function ProjectPage({ id }: { id: string }) {
+  const data = await getDetailProjectData({ id });
+  return (
+    <div>
+      {data.map((project) => (
+        <ProjectDetail
+          key={project.id}
+          {...project}
+          description={project.description || null}
+          content={project.content || null}
+          url_site={project.url_site || null}
+          href={project.href || null}
+          project_tech_stacks={project.ProjectTechStacks}
+        />
       ))}
     </div>
   );
 }
 
-async function getProjectsData(id: number) {
-  const projectData = await prisma.projects.findUnique({
+async function getDetailProjectData({ id }: { id: string }) {
+  const result = await prisma.projects.findMany({
     where: {
-      id: id,
+      id: Number(id),
     },
     include: {
       ProjectTechStacks: {
@@ -51,5 +46,5 @@ async function getProjectsData(id: number) {
       },
     },
   });
-  return projectData;
+  return result;
 }

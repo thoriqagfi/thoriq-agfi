@@ -2,7 +2,7 @@ import prisma from '@/lib/prisma';
 import { NextResponse } from 'next/server';
 
 export async function GET() {
-  const result = prisma.projects.findMany({
+  const result = await prisma.projects.findMany({
     include: {
       ProjectTechStacks: {
         include: {

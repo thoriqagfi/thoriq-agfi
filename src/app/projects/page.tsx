@@ -15,7 +15,7 @@ export default function ProjectsPage() {
           PROJECTS
         </Typography>
       </div>
-      <div className='pt-5 grid grid-cols-2 xl:grid-cols-3 gap-4'>
+      <div className='pt-5 grid grid-cols-1 xl:grid-cols-3 gap-4'>
         {allProjectsData.then((data) =>
           data.map((project, index) => (
             <ProjectCard
