@@ -6,7 +6,9 @@ import React from 'react';
 import { FaEye } from 'react-icons/fa';
 import { IoPerson } from 'react-icons/io5';
 
-export default function ProjectDetail(project: Project) {
+interface ProjectDetailProps extends Project {}
+
+export default function ProjectDetail(project: ProjectDetailProps) {
   return (
     <div key={project.id} className='flex flex-col gap-4'>
       <Image
@@ -66,7 +68,6 @@ export default function ProjectDetail(project: Project) {
         </div>
       </div>
       <hr className='w-full h-2' />
-      <div>{project.content}</div>
     </div>
   );
 }
