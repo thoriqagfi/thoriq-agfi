@@ -34,7 +34,7 @@ export default function Footer() {
         Copyright {new Date().getFullYear()} &copy; All rights reserved. Made by
         &nbsp;
         <span className='hover:text-white ease-in-out transition-all duration-500'>
-          Thariq Agfi Hermawan
+          Thariq Agfi Hermawan.
         </span>
       </Typography>
     </footer>
