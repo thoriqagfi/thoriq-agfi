@@ -3,6 +3,8 @@ import React from 'react';
 import ProjectCard from '@/components/projects-card';
 import prisma from '@/lib/prisma';
 
+export const dynamic = 'force-dynamic';
+
 export default function ProjectsPage() {
   const allProjectsData = getProjectsData();
   return (

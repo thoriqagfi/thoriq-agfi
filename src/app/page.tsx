@@ -3,7 +3,18 @@ import Projects from '@/containers/projects';
 import prisma from '@/lib/prisma';
 import React from 'react';
 
-export default async function Home() {
+export const dynamic = 'force-dynamic';
+
+export default function Home() {
+  return (
+    <main className='layout flex min-h-screen flex-col items-center'>
+      <Hero />
+      <ProjectComponent />
+    </main>
+  );
+}
+
+async function ProjectComponent() {
   const data = await getData();
   const projectsWithTechStacksData = data.props.projectsWithTechStacksData.map(
     (project) => ({
@@ -11,15 +22,10 @@ export default async function Home() {
       project_tech_stacks: project.ProjectTechStacks,
     })
   );
-  return (
-    <main className='layout flex min-h-screen flex-col items-center'>
-      <Hero />
-      <Projects projectsWithTechStacksData={projectsWithTechStacksData} />
-    </main>
-  );
+  return <Projects projectsWithTechStacksData={projectsWithTechStacksData} />;
 }
 
-const getData = async () => {
+async function getData() {
   const projectsWithTechStacksData = await prisma.projects.findMany({
     take: 3,
     include: {
@@ -36,4 +42,4 @@ const getData = async () => {
       projectsWithTechStacksData,
     },
   };
-};
+}
