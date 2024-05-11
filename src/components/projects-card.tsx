@@ -1,6 +1,22 @@
 import Link from 'next/link';
 import React from 'react';
-import { FaEye } from 'react-icons/fa';
+import { FaEye, FaReact, FaGithub, FaFigma, FaDocker } from 'react-icons/fa';
+import { TbBrandNextjs } from 'react-icons/tb';
+import {
+  SiTailwindcss,
+  SiRedux,
+  SiGnubash,
+  SiPostgresql,
+  SiPostman,
+  SiCloudflare,
+  SiGo,
+  SiNginx,
+  SiPrettier,
+  SiMysql,
+  SiEslint,
+  SiTypescript,
+  // SiGin,
+} from 'react-icons/si';
 import Typography from './typography';
 import Image from 'next/image';
 import { IconType } from 'react-icons';
@@ -38,19 +54,36 @@ export default function ProjectCard(project: Project) {
           {project.views} views
         </Typography>
       </div>
-      <Typography className='text-gray-400' variant='label'>
+      <Typography
+        className='text-gray-400 line-clamp-3 text-justify'
+        variant='label'
+      >
         {project.description}
       </Typography>
-      {/* <div className='flex gap-2 pt-2'>
+      <div className='flex gap-2 pt-2'>
         {project.project_tech_stacks.map(({ projectId, TechStacks }, index) => (
           <div key={projectId ?? index} className='text-white'>
-            {TechStacks.icon}
-            <Typography className='text-gray-400' variant='label'>
-              {TechStacks.name}
-            </Typography>
+            {TechStacks.icon === 'TbBrandNextjs' && <TbBrandNextjs />}
+            {TechStacks.icon === 'FaReact' && <FaReact />}
+            {TechStacks.icon === 'SiTailwindcss' && <SiTailwindcss />}
+            {TechStacks.icon === 'SiRedux' && <SiRedux />}
+            {TechStacks.icon === 'SiGnubash' && <SiGnubash />}
+            {TechStacks.icon === 'SiPostgresql' && <SiPostgresql />}
+            {TechStacks.icon === 'SiPostman' && <SiPostman />}
+            {TechStacks.icon === 'SiCloudflare' && <SiCloudflare />}
+            {TechStacks.icon === 'FaGithub' && <FaGithub />}
+            {TechStacks.icon === 'FaFigma' && <FaFigma />}
+            {TechStacks.icon === 'SiGo' && <SiGo />}
+            {/* {TechStacks.icon === 'SiGin' && <SiGin />} */}
+            {TechStacks.icon === 'FaDocker' && <FaDocker />}
+            {TechStacks.icon === 'SiNginx' && <SiNginx />}
+            {TechStacks.icon === 'SiPrettier' && <SiPrettier />}
+            {TechStacks.icon === 'SiMysql' && <SiMysql />}
+            {TechStacks.icon === 'SiEslint' && <SiEslint />}
+            {TechStacks.icon === 'SiTypescript' && <SiTypescript />}
           </div>
         ))}
-      </div> */}
+      </div>
     </Link>
   );
 }
