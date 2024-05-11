@@ -1,11 +1,14 @@
 import ProjectCard from '@/components/projects-card';
 import Typography from '@/components/typography';
-import prisma from '@/lib/prisma';
+import { Project } from '@/types/project';
 import { Button, Link } from '@nextui-org/react';
 import React from 'react';
 
-export default function ProjectsPage() {
-  const allProjectsData = getData();
+export default function ProjectsPage({
+  projectsWithTechStacksData,
+}: {
+  projectsWithTechStacksData: Project[];
+}) {
   return (
     <div id='about' className='min-h-screen flex flex-col justify-center'>
       <Typography
@@ -19,19 +22,17 @@ export default function ProjectsPage() {
         className='pt-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4'
         data-aos='fade-up'
       >
-        {allProjectsData.then((data) =>
-          data.map((project, index) => (
-            <ProjectCard
-              key={project.id ?? index}
-              {...project}
-              description={project.description || null}
-              content={project.content || null}
-              url_site={project.url_site || null}
-              href={project.href || null}
-              project_tech_stacks={project.ProjectTechStacks}
-            />
-          ))
-        )}
+        {projectsWithTechStacksData?.map((project, index) => (
+          <ProjectCard
+            key={project.id ?? index}
+            {...project}
+            description={project.description || null}
+            content={project.content || null}
+            url_site={project.url_site || null}
+            href={project.href || null}
+            project_tech_stacks={project.project_tech_stacks}
+          />
+        ))}
       </div>
       <div className='mt-4'>
         <Button
@@ -47,17 +48,3 @@ export default function ProjectsPage() {
     </div>
   );
 }
-
-export const getData = async () => {
-  const projectsWithTechStacksData = await prisma.projects.findMany({
-    take: 3,
-    include: {
-      ProjectTechStacks: {
-        include: {
-          TechStacks: true,
-        },
-      },
-    },
-  });
-  return projectsWithTechStacksData;
-};

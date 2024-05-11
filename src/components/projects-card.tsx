@@ -1,12 +1,10 @@
 import Link from 'next/link';
 import React from 'react';
-import { FaEye, FaReact } from 'react-icons/fa';
+import { FaEye } from 'react-icons/fa';
 import Typography from './typography';
 import Image from 'next/image';
 import { IconType } from 'react-icons';
 import { Project } from '@/types/project';
-import { TbBrandNextjs } from 'react-icons/tb';
-import { SiRedux, SiTailwindcss } from 'react-icons/si';
 
 export type ProjectCardProps = {
   id: number;
@@ -19,13 +17,6 @@ export type ProjectCardProps = {
 };
 
 export default function ProjectCard(project: Project) {
-  const iconComponents: { [key: string]: IconType } = {
-    TbBrandNextjs: TbBrandNextjs,
-    FaReact: FaReact,
-    SiTailwindcss: SiTailwindcss,
-    SiRedux: SiRedux,
-    // add other icon components here...
-  };
   return (
     <Link
       className='border border-gray-500 p-4 rounded flex flex-col gap-2 cursor-pointer hover:bg-gray-800 hover:bg-opacity-50 transition-all duration-500 ease-in-out hover:scale-105'
@@ -50,14 +41,16 @@ export default function ProjectCard(project: Project) {
       <Typography className='text-gray-400' variant='label'>
         {project.description}
       </Typography>
-      <div className='flex gap-2 pt-2'>
+      {/* <div className='flex gap-2 pt-2'>
         {project.project_tech_stacks.map(({ projectId, TechStacks }, index) => (
           <div key={projectId ?? index} className='text-white'>
-            {TechStacks.icon &&
-              React.createElement(iconComponents[TechStacks.icon])}
+            {TechStacks.icon}
+            <Typography className='text-gray-400' variant='label'>
+              {TechStacks.name}
+            </Typography>
           </div>
         ))}
-      </div>
+      </div> */}
     </Link>
   );
 }

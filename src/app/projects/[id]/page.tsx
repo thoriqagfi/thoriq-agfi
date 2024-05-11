@@ -18,6 +18,7 @@ export default function DetailProjectsPage({
 
 async function ProjectPage({ id }: { id: string }) {
   const data = await getDetailProjectData({ id });
+  await updateProjectView({ id });
   return (
     <div>
       <ProjectDetail
@@ -33,6 +34,21 @@ async function ProjectPage({ id }: { id: string }) {
       <div>{data.content}</div>
     </div>
   );
+}
+
+async function updateProjectView({ id }: { id: string }) {
+  const result = await prisma.projects.update({
+    where: {
+      id: Number(id),
+    },
+    data: {
+      views: {
+        increment: 1,
+      },
+    },
+  });
+  return result;
+
 }
 
 async function getDetailProjectData({ id }: { id: string }) {
