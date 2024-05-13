@@ -2,8 +2,13 @@ import Typography from '@/components/typography';
 import React from 'react';
 import ProjectCard from '@/components/projects-card';
 import prisma from '@/lib/prisma';
+import { Metadata } from 'next';
 
 export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = {
+  title: 'Projects',
+};
 
 export default function ProjectsPage() {
   const allProjectsData = getProjectsData();

@@ -3,6 +3,11 @@ import prisma from '@/lib/prisma';
 import ProjectDetail from '@/components/project-detail';
 import { serialize } from 'next-mdx-remote/serialize';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote/rsc';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Detail Project',
+};
 
 export default function DetailProjectsPage({
   params: { id },

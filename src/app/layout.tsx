@@ -7,7 +7,10 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://thoriqagfi.com'),
-  title: 'Thariq Agfi Hermawan',
+  title: {
+    template: `%s | Thariq Agfi Hermawan`,
+    default: 'Thariq Agfi Hermawan',
+  },
   description:
     'Website portfolio developed by Thariq Agfi Hermawan. Showcasing a diverse range of creative projects and blogs.',
   applicationName: 'Thariq Agfi Hermawan',

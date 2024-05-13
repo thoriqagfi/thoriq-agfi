@@ -55,7 +55,7 @@ export default function ProjectCard(project: Project) {
         </Typography>
       </div>
       <Typography
-        className='text-gray-400 line-clamp-3 text-justify'
+        className='text-gray-400 line-clamp-2 text-justify'
         variant='label'
       >
         {project.description}
