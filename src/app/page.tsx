@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 
 export default function Home() {
   return (
-    <main className='layout flex min-h-screen flex-col items-center'>
+    <main className='layout dark bg-black flex min-h-screen flex-col items-center'>
       <Hero />
       <ProjectComponent />
     </main>

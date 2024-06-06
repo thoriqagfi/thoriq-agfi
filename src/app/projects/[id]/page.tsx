@@ -43,7 +43,7 @@ async function ProjectPage({ id }: { id: string }) {
 async function updateProjectView({ id }: { id: string }) {
   await prisma.projects.update({
     where: {
-      id: Number(id),
+      id: Number(id) ?? 1,
     },
     data: {
       views: {

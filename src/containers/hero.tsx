@@ -29,11 +29,18 @@ export default function Hero() {
   return (
     <div className='min-h-screen flex flex-col justify-center items-center'>
       <div className='flex flex-col gap-5 h-full'>
-        <Typography variant='h5' color='white' weight='bold' data-aos='fade-up'>
+        <Typography
+          variant='h5'
+          className='dark:text-white text-black'
+          color='white'
+          weight='bold'
+          data-aos='fade-up'
+        >
           Hello there!
         </Typography>
         <Typography
           variant='h1'
+          className='dark:text-white text-black'
           color='white'
           weight='bold'
           data-aos='fade-up'
@@ -77,7 +84,7 @@ export default function Hero() {
               isExternal
               className={cn(
                 'text-sm font-bold text-gray-400 flex items-center gap-0.5',
-                'hover:text-gray-100 ease-in-out transition-all duration-500'
+                'dark:hover:text-gray-100 hover:text-black ease-in-out transition-all duration-500'
               )}
             >
               <social.icon />

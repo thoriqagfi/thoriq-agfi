@@ -59,6 +59,9 @@ export default function Navbar() {
                       'text-primary-700 hover:text-primary-700 font-bold',
                     pathname.includes('/projects') &&
                       content.href === '/projects' &&
+                      'text-primary-700 hover:text-primary-700 font-bold',
+                    pathname.includes('/blogs') &&
+                      content.href === '/blogs' &&
                       'text-primary-700 hover:text-primary-700 font-bold'
                   )}
                   href={content.href}
