@@ -12,13 +12,13 @@ model Blogs {
   title        String   @db.VarChar(255)
   description  String?  @db.VarChar(255)
   views        Int      @default(0)
-  images       String   @db.VarChar(255)
-  url          String   @db.VarChar(255) @unique
   minutes_read Int      @default(0)
   createdAt    DateTime @default(now()) @db.Timestamp(6)
   content      String?
   published    Boolean  @default(false)
   authorId     Int
+  images       String   @db.VarChar(255)
+  url          String   @unique @db.VarChar(255)
   Users        Users    @relation(fields: [authorId], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 

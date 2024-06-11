@@ -25,7 +25,7 @@ export enum FontColor {
 }
 
 export enum FontVariant {
-  'montserrat',
+  'monospace',
   'inter',
 }
 
@@ -54,7 +54,7 @@ export default function Typography<T extends React.ElementType>({
   weight = 'regular',
   className,
   color = 'primary',
-  font = 'inter',
+  font,
   variant = 'p',
   ...props
 }: TypographyProps<T> &
@@ -66,7 +66,7 @@ export default function Typography<T extends React.ElementType>({
       className={cn(
         [
           font === 'inter' && ['font-primary'],
-          font === 'montserrat' && ['font-secondary'],
+          font === 'monospace' && ['font-secondary'],
         ],
         [
           variant === 'h1' && ['text-5xl'],

@@ -63,22 +63,22 @@ export default function DetailBlog({
   );
 }
 
-// async function updateBlogView({ id, url }: { url: string; id: string }) {
-//   await prisma.blogs.update({
-//     where: {
-//       id: Number(id),
-//       url: url,
-//     },
-//     data: {
-//       views: {
-//         increment: 1,
-//       },
-//     },
-//   });
-// }
+async function updateBlogView({ url }: { url: string }) {
+  await prisma.blogs.update({
+    where: {
+      // id: id,
+      url: url,
+    },
+    data: {
+      views: {
+        increment: 1,
+      },
+    },
+  });
+}
 
 async function getDetailBlogData({ url }: { url: string }) {
-  // await updateBlogView({ id, url });
+  await updateBlogView({ url });
   const result = await prisma.blogs.findMany({
     where: {
       url: url,
